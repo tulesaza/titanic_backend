@@ -27,6 +27,8 @@ def fpr(conf_matrix):
 def tpr(conf_matrix):
     return conf_matrix.tp / (conf_matrix.tp + conf_matrix.fn) if (conf_matrix.tp + conf_matrix.fn) != 0 else 0
 
+def todict(conf_matrix):
+    return conf_matrix._asdict()
 
 def calculate_roc_curve(y_true, y_scores):
     # generate thresholds over score domain
@@ -34,7 +36,7 @@ def calculate_roc_curve(y_true, y_scores):
     high = max(y_scores)
     step = (abs(low) + abs(high)) / 1000
     thresholds = np.arange(low-step, high+step, step)
-    results = {"thresholds": thresholds}
+    results = {"thresholds": thresholds.tolist()}
     # calculate confusion matrices for all thresholds
     confusion_matrices = []
     for threshold in thresholds:
@@ -42,5 +44,5 @@ def calculate_roc_curve(y_true, y_scores):
     # apply functions to confusion matrices
     results["FPR"]=list(map(fpr, confusion_matrices))
     results["TPR"]=list(map(tpr, confusion_matrices))
-    results["conf_matrices"] = confusion_matrices
+    results["conf_matrices"] = list(map(todict, confusion_matrices))
     return results

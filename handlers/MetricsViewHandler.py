@@ -15,4 +15,4 @@ class MetricsViewHandler(tornado.web.RequestHandler):
         log_reg = self.shared_dict['log_reg']
         scores = log_reg.predict_proba(X)
         results = calculate_roc_curve(y, scores)
-        self.write(results["TPR"])
+        self.finish(results)
