@@ -34,7 +34,7 @@ def calculate_roc_curve(y_true, y_scores):
     # generate thresholds over score domain
     low = min(y_scores)
     high = max(y_scores)
-    step = (abs(low) + abs(high)) / 1000
+    step = (abs(low) + abs(high)) / 100
     thresholds = np.arange(low-step, high+step, step)
     results = {"thresholds": thresholds.tolist()}
     # calculate confusion matrices for all thresholds
