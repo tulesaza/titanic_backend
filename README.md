@@ -1,2 +1,4 @@
-# Sample python application providing Logistic regression ML model for frontend
+# Sample python logistic regression implementation
 Test assignment for h2o company
+
+[Assignment task](assignment.pdf)
