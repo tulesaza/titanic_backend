@@ -1,8 +1,12 @@
-import tornado.web
-from preprocess.preproces_data import split_train_data, prepare_x_and_y
-from ml_models.LogisticRegression import LogisticRegression
+from abc import ABC
 
-class TrainHandler(tornado.web.RequestHandler):
+import tornado.web
+
+from ml_models.LogisticRegression import LogisticRegression
+from preprocess.preproces_data import split_train_data, prepare_x_and_y
+
+
+class TrainHandler(tornado.web.RequestHandler, ABC):
 
     def initialize(self, shared_dict):
         self.shared_dict = shared_dict

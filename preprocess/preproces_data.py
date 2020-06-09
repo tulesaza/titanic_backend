@@ -7,7 +7,7 @@ def split_train_data(dataset, ratio=0.2):
     # random sequence of dataFrame indexes
     shuffled_indexes = np.random.permutation(len(dataset))
     # size of test data according to ratio
-    test_size = int(len(dataset)*ratio)
+    test_size = int(len(dataset) * ratio)
     # array with indexes of test_set
     test_set_indexes = shuffled_indexes[:test_size]
     train_set_indexes = shuffled_indexes[test_size:]

@@ -1,8 +1,11 @@
+from abc import ABC
+
 import tornado.web
+
 from metrics.metrics import calculate_roc_curve
 
 
-class MetricsViewHandler(tornado.web.RequestHandler):
+class MetricsViewHandler(tornado.web.RequestHandler, ABC):
 
     def initialize(self, shared_dict):
         self.shared_dict = shared_dict

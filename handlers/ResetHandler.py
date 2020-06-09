@@ -1,7 +1,9 @@
+from abc import ABC
+
 import tornado.web
 
 
-class ResetHandler(tornado.web.RequestHandler):
+class ResetHandler(tornado.web.RequestHandler, ABC):
 
     def initialize(self, shared_dict):
         self.shared_dict = shared_dict

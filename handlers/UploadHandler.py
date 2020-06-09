@@ -1,10 +1,12 @@
-import tornado.web
-import pandas as pd
 import io
+from abc import ABC
+
 import numpy as np
+import pandas as pd
+import tornado.web
 
 
-class UploadHandler(tornado.web.RequestHandler):
+class UploadHandler(tornado.web.RequestHandler, ABC):
     def initialize(self, shared_dict):
         self.shared_dict = shared_dict
 

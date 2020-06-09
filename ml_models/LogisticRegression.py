@@ -2,13 +2,13 @@ import numpy as np
 
 
 def sigma(z):
-    return 1/(1+np.exp(-z))
+    return 1 / (1 + np.exp(-z))
 
 
 class LogisticRegression:
 
     def __init__(self, theta=None, eta=0.001, iterations=1000000, threshold=0.5):
-        self.theta=theta
+        self.theta = theta
         self.eta = eta
         self.iterations = iterations
         self.threshold = threshold
@@ -20,8 +20,8 @@ class LogisticRegression:
         y = y.reshape(y.shape[0], 1)
         # batch gradient descent
         for iteration in range(self.iterations):
-            gradient = 1/len(X)*X.T.dot(sigma(X.dot(theta))-y)
-            theta = theta - self.eta*gradient
+            gradient = 1 / len(X) * X.T.dot(sigma(X.dot(theta)) - y)
+            theta = theta - self.eta * gradient
         self.theta = theta
 
     def predict_proba(self, X):
